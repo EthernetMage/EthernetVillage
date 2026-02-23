@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camp Layout</title>
 
+<style>
+    /* ===================================== */
+/*              FONT SETUP               */
+/* ===================================== */
+@font-face {
+    font-family: "BitMGothic";
+    src: url("fonts/BitMGothic.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ===================================== */
+/*            GLOBAL LAYOUT              */
+/* ===================================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #191b1a;
+	cursor: url("cursor.png") 16 16, auto;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+}
+
+header .village-title {
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;        /* passt sich an */
+    width: 30%;              /* responsive */
+    height: auto;            /* behält Proportionen */
+    object-fit: contain;
+}
+
+
+main {
+    padding: 40px 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* ===================================== */
+/*          RESPONSIVE WRAPPER           */
+/* ===================================== */
+.wrapper {
+    position: relative;
+    width: min(90vw, 700px);     /* skaliert schön */
+    height: calc(min(90vw, 700px) * 0.75); 
+}
+
+/* ===================================== */
+/*          RESPONSIVE BUILDINGS         */
+/* ===================================== */
+.seat {
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    width: 22%;                          /* skaliert automatisch */
+    background: #ffffff;
+    overflow: hidden;
+    transition: transform 0.25s ease-in-out;
+}
+
+.seat img {
+    width: 105%;
+    height: 105%;
+    object-fit: cover;
+}
+
+/* Semicircle-Positionen jetzt in % */
+.seat:nth-child(1) { top: 3%; left: 39%; }
+.seat:nth-child(2) { top: 18%; left: 65%; }
+.seat:nth-child(3) { top: 50%; left: 72%; }
+.seat:nth-child(4) { top: 50%; left: 6%;  }
+.seat:nth-child(5) { top: 18%; left: 13%; }
+
+/* ===================================== */
+/*          RESPONSIVE CAMPFIRE          */
+/* ===================================== */
+.fire {
+    position: absolute;
+    width: 25%;                  /* skaliert proportional */
+    aspect-ratio: 1 / 1;
+    background: #ff6a00;
+
+    /* bleibt exakt zentriert */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+
+    transition: transform 0.25s ease-in-out;
+}
+
+.fire img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===================================== */
+/*            HOVER EFFECTS              */
+/* ===================================== */
+.seat:hover {
+    transform: scale(1.15);
+    z-index: 10;
+}
+
+.fire:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    z-index: 10;
+}
+</style>
+</head>
+<body>
+    <header>
+        <img src="Title.png" class="village-title" alt="Village Logo">
+    </header>
+
+    <main>
+        <div class="wrapper">
+            <div class="seat"><img src="square1.jpg" alt="Square 1"></div>
+            <div class="seat"><img src="square2.jpg" alt="Square 2"></div>
+            <div class="seat"><img src="square3.jpg" alt="Square 3"></div>
+            <div class="seat"><img src="square4.jpg" alt="Square 4"></div>
+            <div class="seat"><img src="square5.jpg" alt="Square 5"></div>
+
+            <div class="fire"><img src="campfire.jpg" alt="Campfire"></div>
+        </div>
+    </main>
+</body>
+</html>
